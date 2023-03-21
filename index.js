@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const axios = require('axios')
 const TransactionList= require('./routes/list')
 const {job}= require('./controllers/list')
 require('dotenv').config()

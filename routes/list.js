@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {listOfTransactions, ethereumPrice} = require('../controllers/list.js')
+const {listOfTransactions, balanceCheck} = require('../controllers/list.js')
 
 router.post('/transactions', listOfTransactions)
-// router.get('/price', ethereumPrice)
+router.post('/balance', balanceCheck)
 
 module.exports=router
 

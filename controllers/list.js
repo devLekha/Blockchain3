@@ -1,7 +1,9 @@
 const axios = require('axios')
+const Web3 = require('web3');
 var CronJob = require('cron').CronJob;
 const transactions = require('../models/transactions')
 const price = require('../models/price')
+const web3 = new Web3(Web3.givenProvider || "https://mainnet.infura.io/v3/1000bb39892247e68f442cbb06005948");
 exports.listOfTransactions = async function (req, res, next){
    const acc = req.body.account;
    try {
@@ -37,3 +39,11 @@ exports.job = new CronJob(
    null,
    true 
 );
+
+exports.balanceCheck =async function(req, res, next){
+   const account = req.body.account;
+   const balance = await web3.eth.getBalance(account);
+   const etherValue = Web3.utils.fromWei(balance, 'ether');
+   console.log(etherValue);
+   res.json(etherValue)
+}
