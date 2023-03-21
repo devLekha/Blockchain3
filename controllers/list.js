@@ -41,7 +41,7 @@ exports.job = new CronJob(
 );
 
 exports.balanceCheck =async function(req, res, next){
-   const account = req.body.account;
+   const account = req.query.account;
    const balance = await web3.eth.getBalance(account);
    const etherValue = Web3.utils.fromWei(balance, 'ether');
    console.log(etherValue);
