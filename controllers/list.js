@@ -44,6 +44,11 @@ exports.balanceCheck =async function(req, res, next){
    const account = req.query.account;
    const balance = await web3.eth.getBalance(account);
    const etherValue = Web3.utils.fromWei(balance, 'ether');
+   const price = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr')
+   const resp = {
+      ethers:etherValue,
+      price:price.data
+   }
    console.log(etherValue);
-   res.json(etherValue)
+   res.json(resp)
 }

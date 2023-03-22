@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const priceSchema = new mongoose.Schema({
-    inr:Number
+  inr: { type: Number }
 });
 const Price = mongoose.model('Price', priceSchema);
-  module.exports = Price
+module.exports = Price
